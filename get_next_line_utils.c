@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:44:28 by melanieyane       #+#    #+#             */
-/*   Updated: 2022/12/19 09:30:15 by melanieyane      ###   ########.fr       */
+/*   Updated: 2022/12/19 19:14:16 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

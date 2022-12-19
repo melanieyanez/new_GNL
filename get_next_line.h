@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:44:24 by melanieyane       #+#    #+#             */
-/*   Updated: 2022/12/17 19:31:29 by melanieyane      ###   ########.fr       */
+/*   Updated: 2022/12/19 18:35:50 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 char	*get_next_line(int fd);
 void	add_to_buffer(int fd, char **stash);
-void	add_to_stash(char **stash, char *buffer, int len);
+void	add_to_stash(char **stash, char *buffer);
 void	extract_line(char *stash, char **line);
 void	generate_line(char **line, char *stash);
 int		ft_strlen(char const *str);

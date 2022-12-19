@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:29:03 by melanieyane       #+#    #+#             */
-/*   Updated: 2022/12/19 11:52:21 by melanieyane      ###   ########.fr       */
+/*   Updated: 2022/12/19 19:28:22 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = NULL;
 	add_to_buffer(fd, &stash);
-	if (stash == NULL)
-		return (NULL);
+	//if (stash == NULL)
+	//	return (NULL);
 	extract_line(stash, &line);
 	clean_stash(&stash);
 	if (line[0] == '\0')
@@ -41,34 +41,44 @@ void	add_to_buffer(int fd, char **stash)
 	int		len;
 
 	len = 1;
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	while ((check_newline(*stash, '\n') == 0) && (len != 0))
 	{
-		buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		if (buffer == NULL)
+		{
+			//free(buffer);
 			return ;
+		}
 		len = (int)read(fd, buffer, BUFFER_SIZE);
 		if ((*stash == NULL && len == 0) || len == -1)
 		{
 			free(buffer);
+			if (len == -1)
+			{
+				free(*stash);
+				stash = NULL;
+			}
 			return ;
 		}
 		buffer[len] = '\0';
-		add_to_stash(stash, buffer, len);
-		free(buffer);
+		add_to_stash(stash, buffer);
 	}
+	free(buffer);
 }
 
-void	add_to_stash(char **stash, char *buffer, int len)
+void	add_to_stash(char **stash, char *buffer)
 {
-	char	*tmp;
+	char	*tmp = NULL;
 
-	tmp = malloc(sizeof(char) * (ft_strlen(*stash) + len + 1));
-	if (tmp == NULL)
-		return ;
+	//tmp = malloc(sizeof(char) * (ft_strlen(*stash) + len + 1));
+	//if (tmp == NULL)
+	//	return ;
 	if (*stash == NULL)
 		tmp = ft_strdup(buffer);
 	else
 		tmp = ft_strjoin(*stash, buffer);
+	if (*stash)
+		free(*stash);
 	*stash = ft_strdup(tmp);
 	free(tmp);
 }
@@ -82,7 +92,10 @@ void	extract_line(char *stash, char **line)
 		return ;
 	generate_line(line, stash);
 	if (*line == NULL)
+	{
+		free(line);
 		return ;
+	}
 	i = 0;
 	j = 0;
 	while (stash[i])
@@ -119,14 +132,13 @@ void	generate_line(char **line, char *stash)
 	}
 	*line = malloc(sizeof(char) * (malloc_size + 1));
 }
-
 /*
 int	main(void)
 {
 	int		fd;
 	char	*line;
 
-	fd = open("haricotvert.txt", O_RDONLY);
+	fd = open("files/big_line_no_nl", O_RDONLY);
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
