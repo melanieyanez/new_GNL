@@ -6,7 +6,7 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:44:28 by melanieyane       #+#    #+#             */
-/*   Updated: 2022/12/17 19:30:09 by melanieyane      ###   ########.fr       */
+/*   Updated: 2022/12/19 09:30:15 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ void	clean_stash(char **stash)
 	}
 	clean_stash[j] = '\0';
 	free(*stash);
-	*stash = clean_stash;
+	*stash = ft_strdup(clean_stash);
+	free(clean_stash);
 }

@@ -6,7 +6,7 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:29:03 by melanieyane       #+#    #+#             */
-/*   Updated: 2022/12/17 19:36:24 by melanieyane      ###   ########.fr       */
+/*   Updated: 2022/12/19 11:52:21 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	add_to_stash(char **stash, char *buffer, int len)
 		tmp = ft_strjoin(*stash, buffer);
 	*stash = ft_strdup(tmp);
 	free(tmp);
-	tmp = NULL;
 }
 
 void	extract_line(char *stash, char **line)
