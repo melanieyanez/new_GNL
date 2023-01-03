@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:44:28 by melanieyane       #+#    #+#             */
-/*   Updated: 2022/12/19 19:14:16 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/01/03 13:06:45 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,17 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (result);
 }
 
-int	check_newline(char *str, char c)
+int	check_newline(const char *str, char c)
 {
-	int	i;
-
 	if (str == NULL)
 		return (0);
-	i = 0;
-	while (i < ft_strlen(str))
+	while (*str != c)
 	{
-		if (str[i] == c)
-			return (1);
-		i ++;
+		if (*str == '\0')
+			return (0);
+		str++;
 	}
-	return (0);
+	return (1);
 }
 
 void	clean_stash(char **stash)
@@ -89,8 +86,6 @@ void	clean_stash(char **stash)
 	int		i;
 	int		j;
 
-	if (*stash == NULL)
-		return ;
 	clean_stash = NULL;
 	i = 0;
 	while ((*stash)[i] && (*stash)[i] != '\n')

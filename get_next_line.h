@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:44:24 by melanieyane       #+#    #+#             */
-/*   Updated: 2022/12/19 18:35:50 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:56:24 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	generate_line(char **line, char *stash);
 int		ft_strlen(char const *str);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
-int		check_newline(char *str, char c);
+int		check_newline(const char *str, char c);
 void	clean_stash(char **stash);
 
 #endif

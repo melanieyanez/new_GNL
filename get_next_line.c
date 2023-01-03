@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:29:03 by melanieyane       #+#    #+#             */
-/*   Updated: 2022/12/19 19:28:22 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/01/03 13:10:57 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = NULL;
 	add_to_buffer(fd, &stash);
-	//if (stash == NULL)
-	//	return (NULL);
+	if (stash == NULL)
+		return (NULL);
 	extract_line(stash, &line);
 	clean_stash(&stash);
 	if (line[0] == '\0')
@@ -45,10 +45,7 @@ void	add_to_buffer(int fd, char **stash)
 	while ((check_newline(*stash, '\n') == 0) && (len != 0))
 	{
 		if (buffer == NULL)
-		{
-			//free(buffer);
 			return ;
-		}
 		len = (int)read(fd, buffer, BUFFER_SIZE);
 		if ((*stash == NULL && len == 0) || len == -1)
 		{
@@ -68,11 +65,9 @@ void	add_to_buffer(int fd, char **stash)
 
 void	add_to_stash(char **stash, char *buffer)
 {
-	char	*tmp = NULL;
+	char	*tmp;
 
-	//tmp = malloc(sizeof(char) * (ft_strlen(*stash) + len + 1));
-	//if (tmp == NULL)
-	//	return ;
+	tmp = NULL;
 	if (*stash == NULL)
 		tmp = ft_strdup(buffer);
 	else
@@ -88,8 +83,6 @@ void	extract_line(char *stash, char **line)
 	int		i;
 	int		j;
 
-	if (stash == NULL)
-		return ;
 	generate_line(line, stash);
 	if (*line == NULL)
 	{
