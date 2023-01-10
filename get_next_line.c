@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:29:03 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/01/03 13:10:57 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/01/10 13:56:33 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	add_to_buffer(int fd, char **stash)
 			if (len == -1)
 			{
 				free(*stash);
-				stash = NULL;
+				*stash = NULL;
 			}
 			return ;
 		}
