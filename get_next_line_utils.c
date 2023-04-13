@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:44:28 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/01/03 13:06:45 by melanieyane      ###   ########.fr       */
+/*   Updated: 2023/04/13 14:30:08 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Fonction qui calcule la taille d'une chaîne de caractères */
 
 int	ft_strlen(char const *str)
 {
@@ -23,6 +27,10 @@ int	ft_strlen(char const *str)
 		size ++;
 	return (size);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Fonction qui copie une chaîne de caractères */
 
 char	*ft_strdup(const char *s1)
 {
@@ -41,6 +49,10 @@ char	*ft_strdup(const char *s1)
 	result[i] = '\0';
 	return (result);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Fonction qui joint deux chaînes de caractères en allouant de la mémoire */
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -67,6 +79,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (result);
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Fonction pour chercher un passage à la ligne dans une chaîne de caractères */
+
 int	check_newline(const char *str, char c)
 {
 	if (str == NULL)
@@ -79,6 +95,10 @@ int	check_newline(const char *str, char c)
 	}
 	return (1);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Fonction qui permet d'enlever de la stash ce qui a deja été extrait */
 
 void	clean_stash(char **stash)
 {

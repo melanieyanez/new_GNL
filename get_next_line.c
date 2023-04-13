@@ -6,11 +6,15 @@
 /*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:29:03 by melanieyane       #+#    #+#             */
-/*   Updated: 2023/01/10 13:56:33 by myanez-p         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:43:22 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Process de get_next_line */
 
 char	*get_next_line(int fd)
 {
@@ -34,6 +38,11 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Fonction qui utilise un buffer dans lequel on stocke les caractères */
+/* jusqu'à un passage à la ligne */
 
 void	add_to_buffer(int fd, char **stash)
 {
@@ -63,6 +72,10 @@ void	add_to_buffer(int fd, char **stash)
 	free(buffer);
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Fonction qui copie le contenu de mon buffer à la suite de ma stash */
+
 void	add_to_stash(char **stash, char *buffer)
 {
 	char	*tmp;
@@ -77,6 +90,10 @@ void	add_to_stash(char **stash, char *buffer)
 	*stash = ft_strdup(tmp);
 	free(tmp);
 }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Fonction qui extrait la ligne de la stash jusqu'au passage à la ligne */
 
 void	extract_line(char *stash, char **line)
 {
@@ -106,6 +123,10 @@ void	extract_line(char *stash, char **line)
 	(*line)[j] = '\0';
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* Fonction qui alloue de la mémoire pour la ligne qu'on veut renvoyer */
+
 void	generate_line(char **line, char *stash)
 {
 	int	i;
@@ -125,6 +146,7 @@ void	generate_line(char **line, char *stash)
 	}
 	*line = malloc(sizeof(char) * (malloc_size + 1));
 }
+
 /*
 int	main(void)
 {
